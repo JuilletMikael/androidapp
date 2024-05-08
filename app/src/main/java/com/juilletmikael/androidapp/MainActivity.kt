@@ -25,6 +25,9 @@ import androidx.compose.ui.res.stringResource
 import com.juilletmikael.androidapp.model.Contact
 import androidx.core.app.ActivityCompat
 import android.Manifest
+import android.util.Log
+import androidx.compose.foundation.text.ClickableText
+import androidx.compose.ui.text.AnnotatedString
 import com.juilletmikael.androidapp.ui.theme.AndroidAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -74,7 +77,9 @@ fun MyApp(modifier: Modifier = Modifier,){
 fun ContactList(contactList: List<String>) {
     LazyColumn {
         items(contactList) { contact ->
-            Text(text = contact)
+            ClickableText(text = AnnotatedString(contact) ,  onClick = { offset ->
+                Log.d("ClickableText", "$offset -th character is clicked.")
+            })
         }
     }
 }
